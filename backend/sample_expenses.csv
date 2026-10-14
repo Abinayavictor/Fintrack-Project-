@@ -1,0 +1,18 @@
+Title,Amount,Category,Date,Payment Method
+Whole Foods Groceries,$128.50,Food,2026-10-02,Credit Card
+Electric & Gas Utility,94.20,Utilities,2026-10-03,Debit Card
+Metro Monthly Pass,$125.00,Transport,2026-10-01,Credit Card
+Apartment Maintenance,$1,200.00,Housing,2026-10-04,Bank Transfer
+Cinema Tickets,32.00,Entertainment,2026-10-05,Credit Card
+Dental Cleaning & Exam,$185.00,Healthcare,2026-10-06,Debit Card
+Office Supplies & Books,$42.99,Misc,2026-10-07,Credit Card
+Coffee Shop Breakfast,12.50,Food,2026-10-08,Cash
+Hardware & Tools,$58.75,Misc,2026-10-09,Debit Card
+Pharmacy Vitamins,26.40,Healthcare,2026-10-10,Debit Card
+Gas Station Fuel,$48.20,Transport,2026-10-11,Credit Card
+Concert Ticket,65.00,Entertainment,2026-10-12,Credit Card
+Water Utility Bill,35.10,Utilities,2026-10-13,Bank Transfer
+Farmers Market Produce,38.50,Food,2026-10-14,Cash
+Faulty Negative Expense,-50.00,Food,2026-10-10,Credit Card
+Faulty Malformed Date,25.00,Transport,not-a-valid-date,Debit Card
+Faulty Category Item,45.00,SpaceTravel,2026-10-08,Cash
