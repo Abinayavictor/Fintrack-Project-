@@ -1,0 +1,12 @@
+{
+  "name": "fintrack-workspace",
+  "private": true,
+  "description": "FinTrack — Personal Finance & Subscription Intelligence Monorepo Workspace",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview"
+  }
+}
