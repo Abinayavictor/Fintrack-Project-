@@ -9,6 +9,7 @@ from fastapi.responses import RedirectResponse
 from app.database import init_db
 from app.routers import (
     analytics_router,
+    auth_router,
     budgets_router,
     expenses_router,
     subscriptions_router,
@@ -46,6 +47,7 @@ app.add_middleware(
 register_exception_handlers(app)
 
 # Register API Routers
+app.include_router(auth_router)
 app.include_router(expenses_router)
 app.include_router(subscriptions_router)
 app.include_router(budgets_router)

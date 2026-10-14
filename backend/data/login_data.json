@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": "usr_demo",
+      "name": "Demo User",
+      "email": "demo@fintrack.io",
+      "password_hash": "f00a29e9d7bedf225b0f98fc9d45bbe2f0ca1391dd557cd5f314ee9f6d8746e8",
+      "created_at": "2026-10-14T15:26:31.331045+00:00",
+      "last_login": "2026-10-14T15:42:48.955508+00:00"
+    },
+    {
+      "id": "usr_fac9d65fae",
+      "name": "Sarah Connor",
+      "email": "sarah.connor@fintrack.io",
+      "password_hash": "b7e23a9df1963c0890f977b007be61f6b7529d9b0c1b24da908cfc4e7cc081ff",
+      "created_at": "2026-10-14T15:42:49.058709+00:00",
+      "last_login": "2026-10-14T15:42:49.058709+00:00"
+    }
+  ],
+  "login_history": [
+    {
+      "id": "log_init",
+      "email": "demo@fintrack.io",
+      "timestamp": "2026-10-14T15:26:31.331063+00:00",
+      "status": "initial_seed",
+      "ip_address": "127.0.0.1",
+      "user_agent": "system"
+    },
+    {
+      "id": "log_c32ccc9d",
+      "email": "demo@fintrack.io",
+      "timestamp": "2026-10-14T15:26:47.707235+00:00",
+      "status": "success",
+      "ip_address": "127.0.0.1",
+      "user_agent": "python-httpx/0.28.1"
+    },
+    {
+      "id": "log_8342750c",
+      "email": "demo@fintrack.io",
+      "timestamp": "2026-10-14T15:32:09.096754+00:00",
+      "status": "success",
+      "ip_address": "127.0.0.1",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "log_5f10a4c3",
+      "email": "demo@fintrack.io",
+      "timestamp": "2026-10-14T15:42:48.955508+00:00",
+      "status": "success",
+      "ip_address": "testclient",
+      "user_agent": "testclient"
+    },
+    {
+      "id": "log_28e99e51",
+      "email": "demo@fintrack.io",
+      "timestamp": "2026-10-14T15:42:49.010449+00:00",
+      "status": "failed_bad_credentials",
+      "ip_address": "testclient",
+      "user_agent": "testclient"
+    },
+    {
+      "id": "log_156b81bf",
+      "email": "sarah.connor@fintrack.io",
+      "timestamp": "2026-10-14T15:42:49.058709+00:00",
+      "status": "registered_and_logged_in",
+      "ip_address": "testclient",
+      "user_agent": "testclient"
+    }
+  ]
+}

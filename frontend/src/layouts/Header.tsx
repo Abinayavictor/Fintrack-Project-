@@ -5,10 +5,12 @@ import {
   Database,
   Moon,
   Sun,
-  RefreshCw,
   Repeat,
+  LogOut,
+  UserCheck,
 } from 'lucide-react';
 import { NavigationTab } from './Sidebar';
+import { AuthUser } from '../types';
 
 interface HeaderProps {
   currentTab: NavigationTab;
@@ -19,6 +21,8 @@ interface HeaderProps {
   isSeeding: boolean;
   isDarkMode: boolean;
   onToggleDarkMode: () => void;
+  currentUser?: AuthUser | null;
+  onLogout?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -30,6 +34,8 @@ export const Header: React.FC<HeaderProps> = ({
   isSeeding,
   isDarkMode,
   onToggleDarkMode,
+  currentUser,
+  onLogout,
 }) => {
   const titles: Record<NavigationTab, { title: string; subtitle: string }> = {
     overview: {
@@ -116,6 +122,31 @@ export const Header: React.FC<HeaderProps> = ({
           <Plus className="w-4 h-4" />
           <span>Add Expense</span>
         </button>
+
+        {/* Logged in User Profile Pill & Logout */}
+        {currentUser && (
+          <div className="flex items-center gap-1.5 pl-2 ml-1 border-l border-slate-200 dark:border-slate-800">
+            <div className="hidden sm:flex items-center gap-2 px-2.5 py-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl text-xs">
+              <div className="w-5 h-5 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold text-[10px]">
+                {currentUser.name.charAt(0).toUpperCase()}
+              </div>
+              <span className="font-semibold text-slate-800 dark:text-slate-200 max-w-[100px] truncate">
+                {currentUser.name}
+              </span>
+            </div>
+
+            {onLogout && (
+              <button
+                onClick={onLogout}
+                className="p-2 text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+                title="Sign Out"
+                aria-label="Sign Out"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </header>
   );

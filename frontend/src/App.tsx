@@ -7,6 +7,7 @@ import { ExpensesPage } from './pages/ExpensesPage';
 import { SubscriptionsPage } from './pages/SubscriptionsPage';
 import { BudgetsPage } from './pages/BudgetsPage';
 import { AnalyticsPage } from './pages/AnalyticsPage';
+import { LoginPage } from './pages/LoginPage';
 import { ExpenseFormModal } from './components/expenses/ExpenseFormModal';
 import { SubscriptionFormModal } from './components/subscriptions/SubscriptionFormModal';
 import {
@@ -18,6 +19,7 @@ import {
 } from './services/api';
 import {
   AnalyticsSummary,
+  AuthUser,
   Expense,
   ExpenseCreatePayload,
   ForecastResponse,
@@ -27,6 +29,19 @@ import {
 
 const MainApp: React.FC = () => {
   const { showToast } = useToast();
+
+  // Authentication state
+  const [currentUser, setCurrentUser] = useState<AuthUser | null>(() => {
+    const saved = localStorage.getItem('fintrack_auth_user');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch {
+        return null;
+      }
+    }
+    return null;
+  });
 
   const [currentTab, setCurrentTab] = useState<NavigationTab>('overview');
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
@@ -63,6 +78,7 @@ const MainApp: React.FC = () => {
   const [isGlobalSubModalOpen, setIsGlobalSubModalOpen] = useState(false);
 
   const fetchGlobalData = useCallback(async () => {
+    if (!currentUser) return;
     setIsLoading(true);
     try {
       const [summaryData, forecastData, recentExpData] = await Promise.all([
@@ -78,11 +94,26 @@ const MainApp: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
-    fetchGlobalData();
-  }, [fetchGlobalData]);
+    if (currentUser) {
+      fetchGlobalData();
+    }
+  }, [currentUser, fetchGlobalData]);
+
+  const handleLoginSuccess = (user: AuthUser, token: string) => {
+    localStorage.setItem('fintrack_auth_user', JSON.stringify(user));
+    localStorage.setItem('fintrack_auth_token', token);
+    setCurrentUser(user);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('fintrack_auth_user');
+    localStorage.removeItem('fintrack_auth_token');
+    setCurrentUser(null);
+    showToast('You have been signed out.', 'info');
+  };
 
   const handleSeedData = async () => {
     setIsSeeding(true);
@@ -121,6 +152,11 @@ const MainApp: React.FC = () => {
     }
   };
 
+  // If user is not logged in, render the login page!
+  if (!currentUser) {
+    return <LoginPage onLoginSuccess={handleLoginSuccess} />;
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col lg:pl-64 transition-colors">
       {/* Sidebar Navigation */}
@@ -142,6 +178,8 @@ const MainApp: React.FC = () => {
           isSeeding={isSeeding}
           isDarkMode={isDarkMode}
           onToggleDarkMode={toggleDarkMode}
+          currentUser={currentUser}
+          onLogout={handleLogout}
         />
 
         <main className="flex-1 p-4 sm:p-8 max-w-7xl w-full mx-auto">

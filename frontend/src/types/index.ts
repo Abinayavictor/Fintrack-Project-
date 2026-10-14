@@ -166,3 +166,34 @@ export interface CsvImportReport {
   failed_count: number;
   errors: CsvRowError[];
 }
+
+export interface AuthUser {
+  id: string;
+  name: string;
+  email: string;
+  created_at?: string;
+  last_login?: string;
+}
+
+export interface AuthResponse {
+  success: boolean;
+  user: AuthUser;
+  token: string;
+}
+
+export interface LoginAuditRecord {
+  id: string;
+  email: string;
+  timestamp: string;
+  status: string;
+  ip_address: string;
+  user_agent: string;
+}
+
+export interface LoginAuditData {
+  file_path: string;
+  total_registered_users: number;
+  total_login_events: number;
+  users: AuthUser[];
+  recent_logins: LoginAuditRecord[];
+}

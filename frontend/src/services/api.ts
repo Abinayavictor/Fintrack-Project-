@@ -1,6 +1,8 @@
 import axios, { AxiosError } from 'axios';
 import {
   AnalyticsSummary,
+  AuthResponse,
+  AuthUser,
   Budget,
   BudgetUtilization,
   CsvImportReport,
@@ -9,6 +11,7 @@ import {
   ExpenseCreatePayload,
   ExpensePagination,
   ForecastResponse,
+  LoginAuditData,
   Subscription,
   SubscriptionCreatePayload,
   SubscriptionUpdatePayload,
@@ -151,6 +154,23 @@ export const systemApi = {
 
   seed: async (reset: boolean = true): Promise<{ message: string }> => {
     const res = await apiClient.post('/seed', null, { params: { reset } });
+    return res.data;
+  },
+};
+
+export const authApi = {
+  login: async (email: string, password: string): Promise<AuthResponse> => {
+    const res = await apiClient.post<AuthResponse>('/auth/login', { email, password });
+    return res.data;
+  },
+
+  register: async (name: string, email: string, password: string): Promise<AuthResponse> => {
+    const res = await apiClient.post<AuthResponse>('/auth/register', { name, email, password });
+    return res.data;
+  },
+
+  getLoginData: async (): Promise<LoginAuditData> => {
+    const res = await apiClient.get<LoginAuditData>('/auth/login-data');
     return res.data;
   },
 };
