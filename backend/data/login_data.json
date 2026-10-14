@@ -6,7 +6,7 @@
       "email": "demo@fintrack.io",
       "password_hash": "f00a29e9d7bedf225b0f98fc9d45bbe2f0ca1391dd557cd5f314ee9f6d8746e8",
       "created_at": "2026-10-14T15:26:31.331045+00:00",
-      "last_login": "2026-10-14T15:42:48.955508+00:00"
+      "last_login": "2026-10-14T16:04:05.025669+00:00"
     },
     {
       "id": "usr_fac9d65fae",
@@ -65,6 +65,22 @@
       "status": "registered_and_logged_in",
       "ip_address": "testclient",
       "user_agent": "testclient"
+    },
+    {
+      "id": "log_b6d91d76",
+      "email": "demo@fintrack.io",
+      "timestamp": "2026-10-14T15:57:10.970730+00:00",
+      "status": "success",
+      "ip_address": "127.0.0.1",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0"
+    },
+    {
+      "id": "log_d6158c09",
+      "email": "demo@fintrack.io",
+      "timestamp": "2026-10-14T16:04:05.025669+00:00",
+      "status": "success",
+      "ip_address": "127.0.0.1",
+      "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.9444"
     }
   ]
 }
